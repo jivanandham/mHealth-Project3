@@ -95,7 +95,7 @@ public class MedicalCaseAddActivity extends BaseActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.medical_case_take_photo) {
-            // TODO
+            // TODO Task 1.1
             // BEGIN
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -104,27 +104,8 @@ public class MedicalCaseAddActivity extends BaseActivity implements View.OnClick
             }
             // END
         }
-        else if (v.getId() == R.id.medical_case_save) {
-            // TODO
-            // BEGIN
-            if (mEditTextTitle != null
-                    && !mEditTextTitle.equals("")
-                    && mImageBitmap != null
-                    && mRecognizedText != null) {
-                String medicalAdviceTitle = mEditTextTitle.getText().toString();
-                MedicalAdviceRecord adviceRecord = new MedicalAdviceRecord();
-                adviceRecord.setTitle(medicalAdviceTitle);
-                adviceRecord.setBitmap(BitmapUtil.bitmapToString(mImageBitmap));
-                adviceRecord.setContent(mRecognizedText);
-
-                // start a thread to store the record
-                writeToDatabase(adviceRecord);
-                showProgressDialog();
-            }
-            // END
-        }
         else if (v.getId() == R.id.medical_case_recognize) {
-            // TODO
+            // TODO Task 1.2
             // BEGIN
             if (mImageBitmap != null) {
                 if (mMachineLearningModel == ML_MODEL_FIREBASE_TEXT_DETECTOR_DEVICE) {
@@ -183,6 +164,25 @@ public class MedicalCaseAddActivity extends BaseActivity implements View.OnClick
                             });
                     // END
                 }
+            }
+            // END
+        }
+        else if (v.getId() == R.id.medical_case_save) {
+            // TODO Task 1.3
+            // BEGIN
+            if (mEditTextTitle != null
+                    && !mEditTextTitle.equals("")
+                    && mImageBitmap != null
+                    && mRecognizedText != null) {
+                String medicalAdviceTitle = mEditTextTitle.getText().toString();
+                MedicalAdviceRecord adviceRecord = new MedicalAdviceRecord();
+                adviceRecord.setTitle(medicalAdviceTitle);
+                adviceRecord.setBitmap(BitmapUtil.bitmapToString(mImageBitmap));
+                adviceRecord.setContent(mRecognizedText);
+
+                // start a thread to store the record
+                writeToDatabase(adviceRecord);
+                showProgressDialog();
             }
             // END
         }

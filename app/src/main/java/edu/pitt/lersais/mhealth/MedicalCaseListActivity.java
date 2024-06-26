@@ -63,7 +63,7 @@ public class MedicalCaseListActivity extends BaseActivity implements View.OnClic
             mButtonAdd = findViewById(R.id.medical_advice_button_add);
             mButtonAdd.setOnClickListener(this);
 
-            // TODO
+            // TODO Task 1.4
             // BEGIN
             mDatabase = FirebaseDatabase.getInstance().getReference(Constant.DATABASE_MEDICAL_ADVICE);
             mDatabase.child(mCurrentUser.getUid()).addValueEventListener(new ValueEventListener() {
