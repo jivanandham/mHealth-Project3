@@ -1,9 +1,11 @@
 package edu.pitt.lersais.mhealth;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -12,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.nearby.Nearby;
 import com.google.android.gms.nearby.messages.Message;
@@ -33,11 +36,9 @@ import edu.pitt.lersais.mhealth.model.MedicalHistoryRecord;
 import edu.pitt.lersais.mhealth.util.CryptoMessageHandler;
 import edu.pitt.lersais.mhealth.util.DecryptMedicalRecordThread;
 import tgio.rncryptor.RNCryptorNative;
+
 /**
  * The NearbyRecordOnlineShareActivity that is used to share record to others nearby.
- *
- * @author Haobing Huang and Runhua Xu.
- *
  */
 public class NearbyRecordOnlineShareActivity extends BaseActivity implements CryptoMessageHandler.Callback {
 
@@ -61,6 +62,8 @@ public class NearbyRecordOnlineShareActivity extends BaseActivity implements Cry
 
     private String mPasscode;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +76,7 @@ public class NearbyRecordOnlineShareActivity extends BaseActivity implements Cry
             startActivity(intent);
         } else {
 
-            mDatabase = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
+            mDatabase = FirebaseDatabase.getInstance().getReference("MedicalHistory").child(currentUser.getUid());
 
             mTextViewPasscode = findViewById(R.id.share_text_passcode);
             mEditTextPasscode = findViewById(R.id.share_receive_passcode);
@@ -97,7 +100,6 @@ public class NearbyRecordOnlineShareActivity extends BaseActivity implements Cry
             });
 
             findViewById(R.id.share_button_generate).setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
                     int random = new Random().nextInt(1000000);
@@ -121,22 +123,35 @@ public class NearbyRecordOnlineShareActivity extends BaseActivity implements Cry
                             mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    MedicalHistoryRecord encryptedRecord = dataSnapshot.getValue(MedicalHistoryRecord.class);
-                                    CryptoMessageHandler messageHandler = new CryptoMessageHandler(Looper.getMainLooper());
-                                    messageHandler.setCallback(NearbyRecordOnlineShareActivity.this);
-                                    Thread decryptorThread = new DecryptMedicalRecordThread(
-                                            encryptedRecord,
-                                            currentUser.getUid(),
-                                            getApplicationContext(),
-                                            messageHandler
-                                    );
-                                    decryptorThread.start();
-                                    showProgressDialog();
+                                    Log.d(TAG, "DataSnapshot: " + dataSnapshot.toString());
+                                    if (dataSnapshot.exists()) {
+                                        MedicalHistoryRecord encryptedRecord = dataSnapshot.getValue(MedicalHistoryRecord.class);
+                                        if (encryptedRecord == null) {
+                                            Log.e(TAG, "Medical record is null");
+                                            Toast.makeText(NearbyRecordOnlineShareActivity.this, "No medical record found", Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+                                        Log.d(TAG, "Medical record retrieved: " + new Gson().toJson(encryptedRecord));
+                                        CryptoMessageHandler messageHandler = new CryptoMessageHandler(Looper.getMainLooper());
+                                        messageHandler.setCallback(NearbyRecordOnlineShareActivity.this);
+                                        Thread decryptorThread = new DecryptMedicalRecordThread(
+                                                encryptedRecord,
+                                                currentUser.getUid(),
+                                                getApplicationContext(),
+                                                messageHandler
+                                        );
+                                        decryptorThread.start();
+                                        showProgressDialog();
+                                    } else {
+                                        Log.e(TAG, "No data exists at the specified path.");
+                                        Toast.makeText(NearbyRecordOnlineShareActivity.this, "No medical record found", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
 
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
-
+                                    Log.e(TAG, "Database error: " + databaseError.getMessage());
+                                    Toast.makeText(NearbyRecordOnlineShareActivity.this, "Failed to retrieve medical record", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } else {
@@ -170,7 +185,6 @@ public class NearbyRecordOnlineShareActivity extends BaseActivity implements Cry
                             @Override
                             public void onFound(Message message) {
                                 Log.d(TAG, "Found message: " + new String(message.getContent()));
-//                                displayMedicalHistoryRecord(messageToMedicalRecord(message));
                                 displayMedicalHistoryRecord(secureMessageToMedicalRecord(message, mPasscode));
                             }
 
@@ -193,8 +207,7 @@ public class NearbyRecordOnlineShareActivity extends BaseActivity implements Cry
                                     }
                                 });
                         showProgressDialog();
-                    }
-                    else {
+                    } else {
                         snackbarNotify(view, "Please acquire the passcode first.");
                     }
                 }
@@ -211,29 +224,17 @@ public class NearbyRecordOnlineShareActivity extends BaseActivity implements Cry
         Gson gson = new Gson();
         String record = gson.toJson(medicalHistoryRecord);
         Log.d(TAG, "medical record: " + record);
-        Message message = new Message(record.getBytes());
-        return message;
+        return new Message(record.getBytes());
     }
 
     private Message secureMedicalRecordToMessage(MedicalHistoryRecord medicalHistoryRecord, String passcode) {
         Gson gson = new Gson();
         RNCryptorNative rnCryptor = new RNCryptorNative();
-
         String record = gson.toJson(medicalHistoryRecord);
         Log.d(TAG, "original medical record: " + record);
         String encryptedRecord = new String(rnCryptor.encrypt(record, passcode));
         Log.d(TAG, "encrypted medical record: " + encryptedRecord);
-        Message message = new Message(encryptedRecord.getBytes());
-        return message;
-    }
-
-    private MedicalHistoryRecord messageToMedicalRecord(Message message) {
-        Gson gson = new Gson();
-        String record = new String(message.getContent());
-        Log.d(TAG, "received original medical record: " + record);
-        MedicalHistoryRecord medicalHistoryRecord = gson.fromJson(record, MedicalHistoryRecord.class);
-
-        return medicalHistoryRecord;
+        return new Message(encryptedRecord.getBytes());
     }
 
     private MedicalHistoryRecord secureMessageToMedicalRecord(Message message, String passcode) {
@@ -243,9 +244,7 @@ public class NearbyRecordOnlineShareActivity extends BaseActivity implements Cry
         Log.d(TAG, "received encrypted medical record: " + encryptedRecord);
         String record = rnCryptor.decrypt(encryptedRecord, passcode);
         Log.d(TAG, "received original medical record: " + record);
-        MedicalHistoryRecord medicalHistoryRecord = gson.fromJson(record, MedicalHistoryRecord.class);
-
-        return medicalHistoryRecord;
+        return gson.fromJson(record, MedicalHistoryRecord.class);
     }
 
     private void displayMedicalHistoryRecord(MedicalHistoryRecord medicalHistoryRecord) {
@@ -280,7 +279,6 @@ public class NearbyRecordOnlineShareActivity extends BaseActivity implements Cry
 
     @Override
     public void processCryptoRecord(Object object) {
-//        mMessage = medicalRecordToMessage(record);
         MedicalHistoryRecord decryptedRecord = (MedicalHistoryRecord) object;
         mMessage = secureMedicalRecordToMessage(decryptedRecord, mPasscode);
         Nearby.getMessagesClient(NearbyRecordOnlineShareActivity.this)
@@ -298,4 +296,22 @@ public class NearbyRecordOnlineShareActivity extends BaseActivity implements Cry
         hideProgressDialog();
     }
 
+    public void showProgressDialog() {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Loading...");
+            progressDialog.setIndeterminate(true);
+        }
+        progressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+    }
+
+    protected void snackbarNotify(View view, String message) {
+        Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
+    }
 }
