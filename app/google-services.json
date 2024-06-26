@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1092514669072",
+    "firebase_url": "https://healthapp-ac092-default-rtdb.firebaseio.com",
+    "project_id": "healthapp-ac092",
+    "storage_bucket": "healthapp-ac092.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092514669072:android:73d4c34081c7aa27f9a095",
+        "android_client_info": {
+          "package_name": "edu.pitt.lersais.mhealth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_hHFddFxswJACuAArNH-jWfHBAIBHqik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

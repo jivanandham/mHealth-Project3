@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: android.arch.lifecycle:runtime:1.0.0@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/ef8d34e12091e6f43024a486c70064fd/runtime-1.0.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/ef8d34e12091e6f43024a486c70064fd/runtime-1.0.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/modules-2/files-2.1/android.arch.lifecycle/runtime/1.0.0/1dd0298d8c45d8dfa4d038270247327f23df7a3a/runtime-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

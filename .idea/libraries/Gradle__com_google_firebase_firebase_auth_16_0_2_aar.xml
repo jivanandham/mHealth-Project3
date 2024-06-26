@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.google.firebase:firebase-auth:16.0.2@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/cb51f7786fb296cca0348217d6140001/firebase-auth-16.0.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/cb51f7786fb296cca0348217d6140001/firebase-auth-16.0.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

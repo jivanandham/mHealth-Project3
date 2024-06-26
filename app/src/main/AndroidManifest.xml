@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.pitt.lersais.mhealth">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Required for Nearby Connections -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- For shake-to-advertise -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
+
+    <!-- For take a photo-->
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--https://console.developers.google.com/apis/credentials?project=zippy-chariot-146019-->
+        <!--check the credentials-->
+        <meta-data
+            android:name="com.google.android.nearby.messages.API_KEY"
+            android:value="AIzaSyBAZPohrJ1tQePjWZR2lTitQ2KqDbL2Qhc" />
+
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="ocr" />
+        <!-- To use multiple models: android:value="ocr,model2,model3" -->
+
+        <activity
+            android:name="edu.pitt.lersais.mhealth.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="edu.pitt.lersais.mhealth.MedicalRecordEditActivity" android:label="@string/title_activity_medical_record" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="edu.pitt.lersais.mhealth.MedicalRecordViewActivity" android:label="@string/title_activity_view_record" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="edu.pitt.lersais.mhealth.LoginActivity" android:theme="@style/AppTheme" />
+        <activity android:name="edu.pitt.lersais.mhealth.SignupActivity" android:theme="@style/AppTheme" />
+        <activity android:name="edu.pitt.lersais.mhealth.ProfileActivity" android:theme="@style/AppTheme" />
+        <activity android:name="edu.pitt.lersais.mhealth.SettingActivity" android:theme="@style/AppTheme" />
+        <activity android:name="edu.pitt.lersais.mhealth.NearbyRecordOnlineShareActivity" android:theme="@style/AppTheme" />
+        <activity android:name="edu.pitt.lersais.mhealth.NearbyRecordOfflineShareActivity" android:theme="@style/AppTheme" />
+        <activity android:name="edu.pitt.lersais.mhealth.MedicalCaseListActivity" android:theme="@style/AppTheme" />
+        <activity android:name="edu.pitt.lersais.mhealth.MedicalCaseAddActivity" android:theme="@style/AppTheme" />
+    </application>
+
+
+
+</manifest>

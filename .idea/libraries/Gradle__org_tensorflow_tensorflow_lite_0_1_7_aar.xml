@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.tensorflow:tensorflow-lite:0.1.7@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/aa8ee77e4598ccb495168fc4991eef2d/tensorflow-lite-0.1.7/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/aa8ee77e4598ccb495168fc4991eef2d/tensorflow-lite-0.1.7/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

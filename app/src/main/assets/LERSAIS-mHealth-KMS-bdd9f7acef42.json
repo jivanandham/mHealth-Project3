@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lersais-mhealth-lab-project",
+  "private_key_id": "bdd9f7acef422561f06c12d8d5ce1bfcdef671d1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDC6n/72b82Fn9W\nYSIwQIUq+ue7iF971sznAygMgrT2L42VogRNWNUYgKzpWR1cdcE/mtFv59ti3nzj\nkU991TyibbnQ8+p/x9sBaYerrp0w+xl5VhQYJ091sp1GQwgnJuQhfhTEZmfdV1sf\ngvkjDU/7mJVTM+P1Tydy79NxxIlJGJie9E+KlaQgYnPWpkyFe0HpFFntF6ZhlXIc\nCs9KwWp9iTx5/7cGFCi54VJ+sbchZugtZeFsKAfkeEj1tn/nX4rRnkBA9e5A4ALZ\nli75dD60XjdYYOXrERDvWPsB17gI1lnWpoStlrh9+gl1UwFfyCM6nwkAjQ8xRcp0\nGCjOzYMzAgMBAAECggEAJ3wRiRdHINHV4c2ze0rWryo8n0S08wVEZNfC2SXxOp3P\ndKxparHAGUKXxH2E8SH5j8TxAFZbnt+rNP5OuBLmQZEwvx9qNZBq0RJrpV+uACod\nsvK5B1uPQSx5p64UjLnYJODBnDeSesgjcXK6vVsJBNKYDU7Jsvvh5eqnTridhuzW\nHFzMRFwnb/0hwPeaJycSa9Bq+JdC/ZGn9AYyoUKxr482ZixQNCndmy02L7zkzVYt\nTYrJncWvPtxstVaZxSMSVjLk/WM9EEnDG9QwKpCgiHHjrKo0pBFUIbQhOLwtr40f\nHyrFYbwLBLYyInTrMf48ADd3U+/PgL2vXBMBv1cKoQKBgQDhbGqy0I4BqdlbCHTf\nI4miDVQvkvzyqbSTgAKlpZ/Ly7u/GSz9QNDkpFjQY2B6lbSIVOfmsr++IvL5/Zd0\nUOhQN6iKmsZ5EXJArxOO2tz8yBnVrM08YD1mAcsKBOKRMtbzUQPTnigbSx/yANkd\n4xrJfZTV5Q+YflGkW34IduXmdwKBgQDdWr6DLHwvOb6reCpFYBGuTbJOHyH14Zga\n5OE8tP6zF0pnwS94H1AJIqsdMz7yJdNV+m2kye1SE10hlPF6RtmBOsFuEMblpwFm\nbQLlQOYuO9H+MsCa1+um288jamFl25L6m/eaX7LcbpsFKYW8K70MBQOTOZaK0dxQ\nLRLNYa9sJQKBgQCEuMqRgY06mYApwu7cuhW83dAlOovHa/evqHzmfn95A/kEaJQ+\nf7z+AW1xNDGHu0DRy/vFrpSKJBWe7poPl9tP75VCFiKpAYadYvdG8sGN61qaneUw\nmRFNT9z1hy7GgoJgO+De5Y2DlFW4rJsop6AL5e6NiRIHnMgA1wV7glWVvQKBgFb0\ne9yp0Ar5Qza22Nwx9iAj84SO5FdkDM2b1gN0Eo4l+xuxH0Wv/0/nZ5Lr+7FCPLgM\nzZ+rl2fjpXU4vnfLd0w12aC0RH4Y0gr7jeSjTwkghMi4BUOOyMrelIuUEbjiveVm\n+aiSKYBAjvNDMX8PK4+aNKJUQBg+gq6YVkeKNVBlAoGBAJnMeP5Nyo+2XbPX2kzk\nj4NFni9KWTzVmQs/NTfVsc8puwqHbQE+bs83rEdOxuD6DCt7pttDQzgrPP/6PdX7\nWJkYO8PT+yjXSmvb68xBivtmGUpT0OhRRrNJHANyWRrQG6TMGihzoHCaPEF5N1oU\nc6vQ/umjgchaHuisKfj0czHc\n-----END PRIVATE KEY-----\n",
+  "client_email": "lersais-mhealth-kms@lersais-mhealth-lab-project.iam.gserviceaccount.com",
+  "client_id": "108172009257494891776",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lersais-mhealth-kms%40lersais-mhealth-lab-project.iam.gserviceaccount.com"
+}

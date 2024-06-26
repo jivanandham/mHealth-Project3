@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.google.firebase:firebase-iid-interop:16.0.0@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/aac8ae266431fbbad2a8c95cf4ff7153/firebase-iid-interop-16.0.0/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/aac8ae266431fbbad2a8c95cf4ff7153/firebase-iid-interop-16.0.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

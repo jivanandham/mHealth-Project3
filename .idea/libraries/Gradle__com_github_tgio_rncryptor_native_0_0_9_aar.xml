@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.tgio:rncryptor-native:0.0.9@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/a5275f12f9a71c917bb52256e78f9569/rncryptor-native-0.0.9/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/a5275f12f9a71c917bb52256e78f9569/rncryptor-native-0.0.9/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/transforms-2/files-2.1/a5275f12f9a71c917bb52256e78f9569/rncryptor-native-0.0.9/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/modules-2/files-2.1/com.github.tgio/rncryptor-native/0.0.9/c5584d61ce259892ad9be97d186d4e14c7c637b0/rncryptor-native-0.0.9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../../ISP /Final Project/Lab Project 1/mHealth-Project1/caches/modules-2/files-2.1/com.github.tgio/rncryptor-native/0.0.9/daba6b7fd19e887aecfe6e3b6370ef11f24809db/rncryptor-native-0.0.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
